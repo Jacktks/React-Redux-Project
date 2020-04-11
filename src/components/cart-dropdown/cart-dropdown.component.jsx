@@ -9,10 +9,12 @@ import {withRouter} from 'react-router-dom';
 import {selectCartItems} from '../../redux/cart/cart.selectors.js';
 import { toggleCartHidden } from '../../redux/cart/cart.actions';
 
+import { selectCurrentUser } from '../../redux/users/user.selectors';
+
 import CuttomButton from '../custom-button/custom-button.component';
 import CartItem from '../cart-item/cart-item.component';
 
-const CartDropdown = ({cartItems, history, dispatch}) => (//dispatch duoc su dung tu ...otherProps consolog otherProps ra no se~ co truong` dispatch
+const CartDropdown = ({cartItems, history, dispatch, currentUser}) => (//dispatch duoc su dung tu ...otherProps consolog otherProps ra no se~ co truong` dispatch
     <div className="cart-dropdown">
         <div className="cart-items">
             {
@@ -25,7 +27,11 @@ const CartDropdown = ({cartItems, history, dispatch}) => (//dispatch duoc su dun
         </div>
         <CuttomButton onClick={() => 
             {
-                history.push('/checkout');
+                if(currentUser === null){
+                    history.push('/signin')
+                } else {
+                    history.push('/checkout')
+                }
                 dispatch(toggleCartHidden());
             }
         }>
@@ -41,7 +47,8 @@ const CartDropdown = ({cartItems, history, dispatch}) => (//dispatch duoc su dun
 
 //sau khi su dung createStructuredSelector trong reselect
 const mapStateToProps = createStructuredSelector ({
-    cartItems: selectCartItems
+    cartItems: selectCartItems,
+    currentUser: selectCurrentUser
 })
 
 //cach 2: su dung dispatchToprops thay cho dispatch o tren

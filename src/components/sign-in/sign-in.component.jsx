@@ -27,7 +27,7 @@ class SignIn extends React.Component{
                 password:'',
             })
         } catch(err) {
-            console.log(err);
+            alert("USERNAME AND PASSWORD FOR YOU NO PASSED!")
         }
         this.setState({email: '', password: ''})
     }

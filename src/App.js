@@ -18,6 +18,9 @@ import {auth, createUserProfileDocument} from './firebase/firebase.utils';
 import {setCurrentUser} from './redux/users/user.actions';
 import {selectCurrentUser} from './redux/users/user.selectors';
 
+import {toggleCartHidden} from './redux/cart/cart.actions';
+
+
 
 
 
@@ -48,9 +51,10 @@ class App extends React.Component {
   }
 
   render() {
+ 
     return (
       <div>
-        <Header />
+        <Header/>
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
@@ -73,7 +77,8 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
+  toggleCartHidden: () => dispatch(toggleCartHidden()) 
 });
 
 export default connect(
