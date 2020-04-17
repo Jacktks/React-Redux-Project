@@ -28,6 +28,7 @@ const CartDropdown = ({cartItems, history, dispatch, currentUser}) => (//dispatc
         <CuttomButton onClick={() => 
             {
                 if(currentUser === null){
+                    alert('Please log in and then make a payment!')
                     history.push('/signin')
                 } else {
                     history.push('/checkout')

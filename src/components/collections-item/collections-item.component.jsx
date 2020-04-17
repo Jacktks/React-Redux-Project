@@ -12,7 +12,7 @@ import { selectCurrentUser } from '../../redux/users/user.selectors';
 
 import {addItem, toggleCartHidden} from '../../redux/cart/cart.actions';
 
-const CollectionItem = ({item, addItem, currentUser}) => {
+const CollectionItem = ({item, addItem, currentUser,history}) => {
 
     const {name,price,imageUrl} = item;
     return(
@@ -24,10 +24,13 @@ const CollectionItem = ({item, addItem, currentUser}) => {
                 <span className="price">{price}</span>
             </div>
             <CustomButton onClick={() => {
-                addItem(item);
-                // if( currentUser === null){
-                //     history.push('/signin')
-                // }
+                
+                if( currentUser === null){
+                    alert('Please login and then add cart!')
+                    history.push('/signin')
+                } else {
+                    addItem(item);
+                }
             }} inverted>Add to Cart</CustomButton>
         </div>
     )
