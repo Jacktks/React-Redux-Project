@@ -11,7 +11,7 @@ const CustomButton = ({children, isGoogleSignIn,inverted ,...otherProps}) => {
                     : ''
                 } 
                 ${ isGoogleSignIn 
-                    ? 'google-sign-in' 
+                    ? 'google-sign-ins' 
                     : ''
                 } custom-button`
             } {...otherProps}>
