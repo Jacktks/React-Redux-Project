@@ -15,6 +15,8 @@ import Header from './components/headers/header.component';
 
 
 import {auth, createUserProfileDocument} from './firebase/firebase.utils';
+
+
 import {setCurrentUser} from './redux/users/user.actions';
 import {selectCurrentUser} from './redux/users/user.selectors';
 
@@ -43,6 +45,11 @@ class App extends React.Component {
       }
 
       setCurrentUser(userAuth);
+
+      //addCollections vao firebase xong có thể delete
+      // addColletionAndDocuments('collections', collectionArray)
+
+  
     });
   }
 
@@ -73,7 +80,8 @@ class App extends React.Component {
 
 //sau khi su dung createStructuredSelector trong reselect
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  // collectionArray: selectCollectionsForPreview // add vào xong firebase rồi có thể delete
 })
 
 const mapDispatchToProps = dispatch => ({
