@@ -23,6 +23,8 @@ const CollectionPage = ({collection}) => {
     
 }
 
+
+//match.params bởi <Router render={() => collection có trường match and params}>
 const mapStateToProps = (state, ownProps) => ({
     collection: selectItems(ownProps.match.params.collectionId)(state)
 })

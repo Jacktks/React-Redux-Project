@@ -13,10 +13,10 @@ export const selectCollections = createSelector(
 //phuong thuc Object.keys.map object de .map object, neu nhu de .map array nhu cu~ o? component collections-overview se~ bao loi~ map!
 export const selectCollectionsForPreview = createSelector(
     [selectCollections],
-    collections => Object.keys(collections).map(key => collections[key])
+    collections => collections ? Object.keys(collections).map(key => collections[key]) : []
 );
 
 export const selectItems = collectionUrlParam => createSelector(
     [selectCollections],
-    collections => collections[collectionUrlParam]
+    collections => (collections ? collections[collectionUrlParam] : null)
 )
